@@ -717,7 +717,7 @@ if(flStage){flStage.addEventListener('click',function(){
     var ctx=new AC();
     var hint=document.querySelector('.flamenco-hint');
     function playChord(){
-      if(hint){hint.textContent='\u266a Playing...';setTimeout(function(){hint.innerHTML='&#9654; Tap the dancer to hear a guitar chord';},2200);}
+      if(hint){hint.textContent='\u266a Playing...';setTimeout(function(){hint.innerHTML='&#9654; Tap the dancer to hear a guitar chord';},5500);}
       [82.4,123.5,164.8,196.0,246.9,329.6].forEach(function(f,i){
         setTimeout(function(){
           var o=ctx.createOscillator(),g=ctx.createGain(),fi=ctx.createBiquadFilter();
@@ -725,8 +725,8 @@ if(flStage){flStage.addEventListener('click',function(){
           o.type='sawtooth';o.frequency.value=f;
           o.connect(fi);fi.connect(g);g.connect(ctx.destination);
           g.gain.setValueAtTime(0.1,ctx.currentTime);
-          g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+1.4);
-          o.start(ctx.currentTime);o.stop(ctx.currentTime+1.4);
+          g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+5.0);
+          o.start(ctx.currentTime);o.stop(ctx.currentTime+5.0);
         },i*50);
       });
     }
